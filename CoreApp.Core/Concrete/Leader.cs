@@ -7,6 +7,7 @@ namespace CoreApp.Core.Concrete
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool? Active { get; set; }
+        public int DenId { get; set; }
         public Den Den { get; set; }
     }
 }

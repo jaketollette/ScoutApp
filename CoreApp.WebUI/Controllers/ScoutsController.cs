@@ -30,9 +30,10 @@ namespace CoreApp.WebUI.Controllers
                 ScoutViewModel scout = mapper.Map<Scout, ScoutViewModel>(s);
                 model.Add(scout);
             });
+
             if(model.Count() == 0)
             {
-
+                model.Add(new ScoutViewModel());
             }
             return View(model);
         }
