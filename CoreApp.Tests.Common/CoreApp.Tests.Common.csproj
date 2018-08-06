@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -20,6 +20,10 @@
   <ItemGroup>
     <ProjectReference Include="..\CoreApp.Core\CoreApp.Core.csproj" />
     <ProjectReference Include="..\CoreApp.Infrastructure\CoreApp.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Microsoft.NETCore.App" Version="2.1" />
   </ItemGroup>
 
 </Project>
