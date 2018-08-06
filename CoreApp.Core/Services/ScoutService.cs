@@ -1,5 +1,6 @@
 ﻿using CoreApp.Core.Abstract;
 using CoreApp.Core.Concrete;
+using System;
 using System.Collections.Generic;
 
 namespace CoreApp.Core.Services
@@ -30,7 +31,7 @@ namespace CoreApp.Core.Services
 
         public IEnumerable<Scout> GetScouts(IEnumerable<Badge> badges)
         {
-            return repository.GetScouts(badges);
+            throw new NotImplementedException();
         }
 
         public IEnumerable<Scout> GetScouts(string lastName, bool? detail = false)

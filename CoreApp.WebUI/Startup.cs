@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using CoreApp.Core.Abstract;
 using CoreApp.Core.Services;
+using CoreApp.Infrastructure.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -27,11 +29,25 @@ namespace CoreApp.WebUI
             services.AddAutoMapper();
             services.AddMvc();
 
+            // Setup database in virtual method for test override.
+            ConfigureDatabase(services);
+
             services.AddTransient<IScoutService, ScoutService>();
+            services.AddTransient<IScoutRepository, ScoutRepository>();
+        }
+
+        public virtual void ConfigureDatabase(IServiceCollection services)
+        {
+            services.AddDbContext<ScoutContext>(opts =>
+            {
+                opts.UseSqlServer(Configuration.GetConnectionString("ScoutDatabase"))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        // Marked virtual for test override.
+        public virtual void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

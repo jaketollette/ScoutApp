@@ -7,5 +7,7 @@
 
         public int BadgeId { get; set; }
         public Badge Badge { get; set; }
+
+        public Icon Icon { get; set;  }
     }
 }

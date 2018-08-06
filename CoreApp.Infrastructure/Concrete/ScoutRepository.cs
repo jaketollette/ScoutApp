@@ -18,7 +18,7 @@ namespace CoreApp.Infrastructure.Concrete
             if((bool) details)
             {
                 return context.Scouts
-                    .Include(s => s.Badges)
+                    .Include(s => s.ScoutBadges)
                         .ThenInclude(b => b.Icon)
                     .Include(s => s.Den)
                     .Include(s => s.Rank)
@@ -38,9 +38,9 @@ namespace CoreApp.Infrastructure.Concrete
             return context.Scouts.Where(s => s.Den == den).AsEnumerable();
         }
 
-        public IEnumerable<Scout> GetScouts(IEnumerable<Badge> badges)
+        public IEnumerable<Scout> GetScouts(IEnumerable<ScoutBadge> badges)
         {
-            return context.Scouts.Where(s => s.Badges.All(b => badges.Contains(b))).AsEnumerable();
+            return context.Scouts.Where(s => s.ScoutBadges.All(b => badges.Contains(b))).AsEnumerable();
         }
 
         public IEnumerable<Scout> GetScouts(string lastName, bool? detail = false)
@@ -48,7 +48,7 @@ namespace CoreApp.Infrastructure.Concrete
             if((bool) detail)
             {
                 return context.Scouts
-                    .Include(s => s.Badges)
+                    .Include(s => s.ScoutBadges)
                         .ThenInclude(b => b.Icon)
                     .Include(s => s.Den)
                     .Include(s => s.Rank)
@@ -64,7 +64,7 @@ namespace CoreApp.Infrastructure.Concrete
             if((bool) detail)
             {
                 return context.Scouts
-                    .Include(s => s.Badges)
+                    .Include(s => s.ScoutBadges)
                         .ThenInclude(b => b.Icon)
                     .Include(s => s.Den)
                     .Include(s => s.Rank)
@@ -82,7 +82,7 @@ namespace CoreApp.Infrastructure.Concrete
             if ((bool)detail)
             {
                 return context.Scouts
-                    .Include(s => s.Badges)
+                    .Include(s => s.ScoutBadges)
                         .ThenInclude(b => b.Icon)
                     .Include(s => s.Den)
                     .Include(s => s.Rank)

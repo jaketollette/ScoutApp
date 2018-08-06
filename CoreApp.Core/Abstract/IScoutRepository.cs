@@ -8,7 +8,7 @@ namespace CoreApp.Core.Abstract
         IEnumerable<Scout> GetScouts(bool? detail = false);
         IEnumerable<Scout> GetScouts(Rank rank);
         IEnumerable<Scout> GetScouts(Den den);
-        IEnumerable<Scout> GetScouts(IEnumerable<Badge> badges);
+        IEnumerable<Scout> GetScouts(IEnumerable<ScoutBadge> badges);
         IEnumerable<Scout> GetScouts(string lastName, bool? detail = false);
         IEnumerable<Scout> GetScouts(string lastName, string firstName, bool? detail = false);
         Scout GetScout(int id, bool? detail = false);
