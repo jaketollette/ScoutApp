@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace CoreApp.WebUI.Controllers
 {
+    [Route("api/[controller]")]
     public class ScoutsController : Controller
     {
         private readonly IScoutService scoutService;
@@ -19,7 +20,8 @@ namespace CoreApp.WebUI.Controllers
             this.mapper = mapper;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult Get()
         {
             var model = new List<ScoutViewModel>();
             scoutService.GetScouts().ToList().ForEach(s =>
@@ -32,7 +34,7 @@ namespace CoreApp.WebUI.Controllers
             {
                 model.Add(new ScoutViewModel());
             }
-            return View(model);
+            return Ok(model);
         }
     }
 }
