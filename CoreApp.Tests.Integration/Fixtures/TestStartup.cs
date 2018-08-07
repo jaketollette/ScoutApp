@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace CoreApp.Tests.Integration.Fixtures
 {
@@ -18,7 +19,8 @@ namespace CoreApp.Tests.Integration.Fixtures
         {
             services.AddDbContext<ScoutContext>(opts =>
             {
-                opts.UseInMemoryDatabase("test_db");
+                opts.UseInMemoryDatabase("test_db")
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             });
             services.AddTransient<DatabaseSeeder>();
         }

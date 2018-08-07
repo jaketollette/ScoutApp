@@ -13,13 +13,15 @@ namespace CoreApp.Tests.Common.Data
 
         public void Seed()
         {
-            context.Dens.AddRange(PredefinedData.Dens);
-            context.Badges.AddRange(PredefinedData.Badges);
-            context.Ranks.AddRange(PredefinedData.Ranks);
-            context.Scouts.AddRange(PredefinedData.Scouts);
-            context.Leaders.AddRange(PredefinedData.Leaders);
-            context.Icons.AddRange(PredefinedData.Icons);
-            context.ScoutBadges.AddRange(PredefinedData.ScoutBadges);
+            context.Database.EnsureDeleted();
+
+            context.Dens.AddRange(PredefinedData.Dens());
+            context.Icons.AddRange(PredefinedData.Icons());
+            context.Badges.AddRange(PredefinedData.Badges());
+            context.Ranks.AddRange(PredefinedData.Ranks());
+            context.Scouts.AddRange(PredefinedData.Scouts());
+            context.Leaders.AddRange(PredefinedData.Leaders());
+            context.ScoutBadges.AddRange(PredefinedData.ScoutBadges());
             context.SaveChanges();
         }
     }

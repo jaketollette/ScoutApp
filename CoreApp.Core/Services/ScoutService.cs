@@ -48,5 +48,10 @@ namespace CoreApp.Core.Services
         {
             return repository.GetScout(id, detail);
         }
+
+        public void AddScout(Scout scout)
+        {
+            repository.Insert(scout);           
+        }
     }
 }

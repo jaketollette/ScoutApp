@@ -12,5 +12,6 @@ namespace CoreApp.Core.Abstract
         IEnumerable<Scout> GetScouts(Rank rank);
         IEnumerable<Scout> GetScouts(string lastName, bool? detail = false);
         IEnumerable<Scout> GetScouts(string lastName, string firstName, bool? detail = false);
+        void AddScout(Scout scout);
     }
 }
